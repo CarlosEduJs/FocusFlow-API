@@ -1,4 +1,4 @@
-import User from '../../models/userModel.js';
+import User from '../../middleware/models/userModel.js';
 import { generateToken } from "../../utils/generateTokens.js"
 
 import { sendLinkToResetPassword } from '../../utils/nodemailer.js';
@@ -20,7 +20,7 @@ export const requestPasswordReset = async (req, res) => {
         await user.save();
 
         // Cria o link de redefinição
-        const resetLink = `http://localhost:5173/${user._id}/ConfirmPassword/${resetToken}`;
+        const resetLink = `http://localhost:5173/ConfirmPassword/${resetToken}`;
 
         // Envia o e-mail com o link de redefinição
         await sendLinkToResetPassword(resetLink, email);
