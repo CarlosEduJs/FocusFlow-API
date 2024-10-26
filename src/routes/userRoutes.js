@@ -14,7 +14,9 @@ import { resetPassword } from "../controllers/userControllers/resetPassword.js";
 import { resetWordSecret } from "../controllers/userControllers/resetWordSecret.js";
 
 import { requestPasswordReset } from "../controllers/userControllers/sendLinkResetPassword.js"
-import { requestWordSecretReset } from "../controllers/userControllers/sendLinkResetWordSecret.js"
+import { requestWordSecretReset } from "../controllers/userControllers/sendLinkResetWordSecret.js";
+
+import { validateToken } from "../controllers/validateToken.js";
 
 //importando controllers - Categorias
 
@@ -45,6 +47,8 @@ router.get("/:uid", userInfor);
 router.put("/updateUser/:id", updateUser);
 router.put("/updateUser/:id/resetPassord/:token", resetPassword);
 router.put("/updateUser/:id/resetWordSecret/:token", resetWordSecret);
+
+router.post("/validateToken/:token", validateToken);
 
 //definindo rotas- Categorias
 router.post("/:id/categories", categoryCreate);
