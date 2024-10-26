@@ -1,4 +1,4 @@
-import User from '../../middleware/models/userModel.js';
+import User from '../../models/userModel.js';
 import { generateToken } from "../../utils/generateTokens.js"
 
 import { sendLinkToResetPassword } from '../../utils/nodemailer.js';
