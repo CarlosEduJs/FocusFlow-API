@@ -21,5 +21,5 @@ app.use(express.json());
 app.use('/api', userRoutes);
 
 app.listen(port, () => {
-    console.log("Servidor ON!");
+    console.log("Servidor ON!!!");
 })
