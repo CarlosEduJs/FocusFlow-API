@@ -20,7 +20,7 @@ export const requestWordSecretReset = async (req, res) => {
         await user.save();
 
         // Cria o link de redefinição
-        const resetLink = `http://localhost:5173/ConfirmWordSecret/${resetToken}`;
+        const resetLink = `http://localhost:5173/${user._id}/ConfirmWordSecret/${resetToken}`;
 
         // Envia o e-mail com o link de redefinição
         await sendLinkToResetWordSecret(resetLink, email);
