@@ -1,11 +1,14 @@
 import User from "../../models/userModel.js"
 import bcrypt from "bcrypt";
-
+import jwt from "jsonwebtoken"
 export const resetPassword = async (req, res) => {
-    const { id } = req.params;
+    const { id, token } = req.params;
     const { newPassword } = req.body;
 
     try {
+        const secret = process.env.JWT_SECRET;
+        jwt.verify(token, secret);
+
         const user = await User.findById(id);
         if (!user) {
             return res.status(404).json({ message: "Usuario não encontrado!" })

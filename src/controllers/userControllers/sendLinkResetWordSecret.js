@@ -1,5 +1,5 @@
 import User from '../../models/userModel.js';
-import crypto from 'crypto';
+import { generateToken } from "../../utils/generateTokens.js"
 
 import { sendLinkToResetWordSecret } from '../../utils/nodemailer.js';
 
@@ -13,7 +13,7 @@ export const requestWordSecretReset = async (req, res) => {
         }
 
         // Gera o token de redefinição e define a expiração
-        const resetToken = crypto.randomBytes(32).toString("hex");
+        const resetToken = generateToken(user._id);
         user.resetWordSecretToken = resetToken;
         user.resetWordSecretTokenExpires = Date.now() + 3600000; // 1 hora
 

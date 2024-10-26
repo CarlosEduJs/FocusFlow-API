@@ -1,5 +1,5 @@
 import User from '../../models/userModel.js';
-import crypto from 'crypto';
+import { generateToken } from "../../utils/generateTokens.js"
 
 import { sendLinkToResetPassword } from '../../utils/nodemailer.js';
 
@@ -13,9 +13,9 @@ export const requestPasswordReset = async (req, res) => {
         }
 
         // Gera o token de redefinição e define a expiração
-        const resetToken = crypto.randomBytes(32).toString("hex");
+        const resetToken = generateToken(user._id);
         user.resetPasswordToken = resetToken;
-        user.resetPasswordTokenExpires = Date.now() + 3600000; // 1 hora
+        user.resetPasswordTokenExpires = Date.now() + 3600000;
 
         await user.save();
 

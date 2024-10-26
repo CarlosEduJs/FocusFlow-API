@@ -43,8 +43,8 @@ router.delete("/:id", deleteUser);
 router.get("/:uid", userInfor);
 
 router.put("/updateUser/:id", updateUser);
-router.put("/updateUser/:id/resetPassord", resetPassword);
-router.put("/updateUser/:id/resetWordSecret", resetWordSecret);
+router.put("/updateUser/:id/resetPassord/:token", resetPassword);
+router.put("/updateUser/:id/resetWordSecret/:token", resetWordSecret);
 
 //definindo rotas- Categorias
 router.post("/:id/categories", categoryCreate);
